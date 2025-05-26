@@ -1,9 +1,10 @@
 resource "google_compute_network" "vpc" {
-  name                    = var.name
-  project                 = var.project_id
+  # Create a VPC network
+  name                    = "main"
   auto_create_subnetworks = false
-    delete_default_routes_on_create = true
+  project                 = local.project_id
   routing_mode            = "REGIONAL"
+  delete_default_routes_on_create = true
   depends_on = [ google_project_service.api ]
 }
 
@@ -15,12 +16,3 @@ resource "google_compute_route" "default-route" {
   dest_range  = "0.0.0.0/0"
   next_hop_gateway = "default-internet-gateway"
   }
-
-resource "google_project_service" "api" {
-  for_each = toset([
-    "compute.googleapis.com"
-  ])
-  service = each.key
-}
-
-

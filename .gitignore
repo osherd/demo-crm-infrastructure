@@ -1,5 +1,25 @@
-# Terraform
-*.tfstate
-*.tfstate.*
+# Local .terraform directories
 .terraform/
-.terraform.lock.hcl
+
+# Terraform plan files
+*.tfplan
+
+# State files
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+
+# Sensitive override files
+*.tfvars
+*.tfvars.json
+
+# CLI configuration
+.terraformrc
+terraform.rc
+
+# IDE/editor folders
+.vscode/
+.idea/
+.DS_Store

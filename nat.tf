@@ -2,25 +2,25 @@
 # This address will be used by the NAT gateway to access the internet
 resource "google_compute_address" "nat" {
   name         = "nat"
-  region       = var.region
+  region       = local.region
   address_type = "EXTERNAL"
-  project      = var.project_id
+  project      = local.project_id
   network_tier = "STANDARD"
   depends_on = [ google_project_service.api ]
 }
 
 resource "google_compute_router" "router" {
   name    = "router"
-  region  = var.region
+  region  = local.region
   network = google_compute_network.vpc.id
-  project = var.project_id
+  project = local.project_id
   }
 
 resource "google_compute_router_nat" "nat" {
   name   = "nat"
-  region = var.region
+  region = local.region
   router = google_compute_router.router.name
-  project = var.project_id
+  project = local.project_id
 
 
   nat_ip_allocate_option = "MANUAL_ONLY"

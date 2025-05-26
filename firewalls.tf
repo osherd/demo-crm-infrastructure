@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "allow_iap_ssh" {
   name    = "allow-iap-ssh"
-  network = module.vpc.vpc_self_link
+  network = google_compute_network.vpc.name
 
 
   # Allow IAP SSH connections
