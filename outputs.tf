@@ -1,24 +1,30 @@
-# output "cluster_endpoint" {
-#   value = module.eks.cluster_endpoint
-# }
+# outputs cluster information and network details
+output "cluster_name" {
+  value = module.gke.name
+}
+output "cluster_id" {
+  value = module.gke.cluster_id
+}
 
-# output "SG" {
-#     value = {
-#         "cluster_primary_security_group_id" = module.eks.cluster_primary_security_group_id
-#         "cluster_security_group_id" = module.eks.cluster_security_group_id
-#         "node_security_group_id" = module.eks.node_security_group_id
-#     }
-# }
 
-# output "cluster_connect" {
-#     value = "aws eks update-kubeconfig --region ${var.region} --name ${module.eks.cluster_name}"
-# }
+#output vpc and network details
+output "vpc_id" {
+  value = module.network.vpc_id
+}
+output "subnet_ids" {
+  value = module.network.subnet_ids
+}
+output "region" {
+  value = var.region
+}
+output "project_id" {
+  value = var.project_id
+}
 
-# output "network_self_link" {
-#   value = module.network.subnet_self_links
+output "app_name" {
+  value = var.common_tags.app_name  
 
-# }
-# output "subnet_self_link" {
-#  value = module.network.subnet_self_links
-
-# }
+}
+output "owner" {
+  value = var.common_tags.owner
+}
