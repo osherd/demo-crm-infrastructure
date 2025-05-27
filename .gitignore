@@ -23,3 +23,6 @@ terraform.rc
 .vscode/
 .idea/
 .DS_Store
+
+#lock files
+.terraform.lock.hcl
