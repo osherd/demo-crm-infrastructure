@@ -20,3 +20,8 @@ variable "ha" {
   type    = number
   default = 3
 }
+
+variable "ip_cidr_range" {
+  type        = string
+  default     = "10.0.2.0/24"
+}

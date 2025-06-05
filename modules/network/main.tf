@@ -29,7 +29,7 @@ resource "google_compute_router" "this" {
 resource "google_compute_subnetwork" "this" {
   count             = local.total
   name              = "${var.name_prefix}-subnet-${count.index}"
-   ip_cidr_range = cidrsubnet(var.vpc_cidr, 8, count.index)  # results in /24
+   ip_cidr_range =  var.ip_cidr_range 
 
   region            = var.region
   network           = google_compute_network.this.id
